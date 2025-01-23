@@ -77,7 +77,7 @@ async def delete_user(db: Annotated[Session, Depends(get_db)], user_id: int):
     else:
         db.execute(delete(User).where(User.id == user_id))
         db.commit()
-        return user, {
+        return {
             'status_code': status.HTTP_200_OK,
             'transaction': 'User delete is successful'
         }
